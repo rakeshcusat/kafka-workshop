@@ -166,8 +166,8 @@ The following files are part of this repositiory.
     ├── start-services.sh
     └── stop-services.sh
 ```
- 1. `Vagrantfile`: This file creates the vagrant box which is Ubuntu-14.04 based. This vagrant box provide required environment. The provision script of vagrant automatically create the environment and installed the required packages in `/home/vagrant/workspace/` directory.
- 2. `src/kafka-consumer.py`: This python script act as consumer which consumes the messages publish on `test` topic. It uses python library called [kafka-python](http://kafka-python.readthedocs.org/en/latest/usage.html#kafkaconsumer)
- 3. `src/kafka-producer.py`: This python script act as producer which publishes the messages on `test` topic.  It uses python library called [kafka-python](http://kafka-python.readthedocs.org/en/latest/usage.html#simpleproducer)
- 4. `src/start-services.sh`: This shell script starts zookeeper and kafka service.
- 5. `src/stop-services.sh`: This shell script stops zookeeper and kafka service.
+ 1. [Vagrantfile](https://github.com/rakeshcusat/kafka-workshop/blob/master/Vagrantfile): This file creates the vagrant box which is Ubuntu-14.04 based. This vagrant box provide required environment. The provision script of vagrant automatically create the environment and installed the required packages in `/home/vagrant/workspace/` directory.
+ 2. [src/kafka-consumer.py](https://github.com/rakeshcusat/kafka-workshop/blob/master/src/kafka-consumer.py): This python script act as consumer which consumes the messages publish on `test` topic. It uses python library called [kafka-python](http://kafka-python.readthedocs.org/en/latest/usage.html#kafkaconsumer)
+ 3. [src/kafka-producer.py](https://github.com/rakeshcusat/kafka-workshop/blob/master/src/kafka-producer.py): This python script act as producer which publishes the messages on `test` topic.  It uses python library called [kafka-python](http://kafka-python.readthedocs.org/en/latest/usage.html#simpleproducer)
+ 4. [src/start-services.sh](https://github.com/rakeshcusat/kafka-workshop/blob/master/src/start-services.sh): This shell script starts zookeeper and kafka service.
+ 5. [src/stop-services.sh](https://github.com/rakeshcusat/kafka-workshop/blob/master/src/stop-services.sh): This shell script stops zookeeper and kafka service.
