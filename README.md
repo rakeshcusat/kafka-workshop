@@ -2,7 +2,7 @@
 
 ## Prerequisites
 ---
- - Vagrant (if it is not installed then follow the instrctions given [here]())
+ - Vagrant (if it is not installed then follow the instrctions given [here](https://github.com/rakeshcusat/kafka-workshop/wiki/Vagrant-installation-steps))
  - Internet connection
  - Basic python understanding
  
