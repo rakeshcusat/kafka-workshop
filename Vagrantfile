@@ -43,40 +43,41 @@ apt-get -qy update
 echo "Setting timezone..."
 echo "America/Los_Angeles" | sudo tee /etc/timezone
 sudo dpkg-reconfigure --frontend noninteractive tzdata
-wget -q -O - https://get.docker.io/gpg | apt-key add -;
-echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list;
-apt-get update -qq; apt-get install -q -y --force-yes lxc-docker
-usermod -a -G docker vagrant;
 
 # Install 
+echo "Installing jre and jdk"
 apt-get install htop default-jre default-jdk -y
 
 # Make workspace directory in /home/vagrant directory
 mkdir -p /home/vagrant/workspace
 
 # Install Zookeeper
+echo "Installing zookeeper"
 cd /home/vagrant/workspace
-wget -nv http://mirrors.ukfast.co.uk/sites/ftp.apache.org/zookeeper/stable/zookeeper-3.4.6.tar.gz
-tar -xvf zookeeper-3.4.6.tar.gz
+tar -xvf /vagrant/packages/zookeeper-3.4.6.tar.gz
 cd zookeeper-3.4.6/
 cp conf/zoo_sample.cfg conf/zoo.cfg
 
 # Install kafka
+echo "Installing kafka"
 cd /home/vagrant/workspace
-wget -nv http://supergsego.com/apache/kafka/0.8.2.1/kafka_2.10-0.8.2.1.tgz
-tar xvzf kafka_2.10-0.8.2.1.tgz
+tar xvzf /vagrant/packages/kafka_2.10-0.8.2.1.tgz
 
 # Install pip and ipython
+echo "Installing pip and ipython"
 apt-get install python-pip ipython -y
 
 # Install virtual environment
+echo "Installing virtualenv"
 sudo pip install virtualenv
 
 # Create virtual environment in '/home/vagrant/workspace' directory
+echo "Creating virtual env"
 cd /home/vagrant/workspace
 virtualenv .kafka-workspace
 
 # Install kafka-python in virtual environment
+echo "Installing kafka-python in virtualenv"
 source .kafka-workspace/bin/activate
 pip install kafka-python
 
