@@ -22,8 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   app_servers.each do |app_server_name, app_server_ip|
     config.vm.define app_server_name do |app_config|
-        app_config.vm.box = "ubuntu14.04"
-        app_config.vm.box_url = "https://oss-binaries.phusionpassenger.com/vagrant/boxes/latest/ubuntu-14.04-amd64-vbox.box" 
+        app_config.vm.box = "chef/ubuntu-14.04"
         app_config.vm.provision "shell", inline: $provision_shell_script
         app_config.ssh.insert_key = false
 
