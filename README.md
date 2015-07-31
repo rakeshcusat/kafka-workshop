@@ -169,7 +169,7 @@ Following is a list of interesting commands, more can be found [here](https://cw
     
 ### Repository information
 ---
-The following files are part of this repositiory.
+The most important files are listed below.
 ```
 ├── Vagrantfile
 └── src
