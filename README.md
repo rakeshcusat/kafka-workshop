@@ -20,38 +20,50 @@
   vagrant up
   ```
   This step will take couple of minutes. This step will bring up the `Ubuntu 14.04` box with `zookeeper` and `kafa` installed in `/home/vagrant/workspace/` directory. This vagrant box also has `.kafka-workspace` virtual environment in `/home/vagrant/workspace/` direcotry. This virtual environment is used by the python scripts (kafka-consumer.py & kafka-producer.py)
-3. Open two terminals and ssh to the vagrant from `kafka-workshop` directory. Run the following commands on both the terminals.
+  
+3. Open two terminals and ssh to the vagrant from `kafka-workshop` directory. One can be used for producer whereas other can be used for consumer script. Run the following commands on both the terminals.
   
   ```
   vagrant ssh
   cd workspace
   ```
   You will notice zookeeper and kafka directory inside `workshop` directory, whereas `src` directory of the project is mapped to `/vagrant/src/` directory.
-4. On one of the terminals start the services.
+  
+4. On one of the terminals start the services by executing the following command.
   
   ```
   /vagrant/src/start-services.sh
   ```
   Execute `pgrep java` to make sure services (zookeeper & kafka) are up. If you don't see any output then something is definitely wrong. Check the troubleshooting section.
-5. As you have open two terminals one can be used for producer whereas other can be used for consumer script. Execute the following command on consumer-terminal. Consumer script will be keep waiting for the messages from the producer. Once a message is available, it will print on the console.
+  
+5. Execute the following command on any of the terminals to create the kafka topic.
+
+  ```
+  /home/vagrant/workspace/kafka_2.10-0.8.2.1/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
+  ```
+  
+6. Execute the following command on consumer-terminal. Consumer script will keep waiting for the messages from the producer. Once a message is available, it will print on the console.
   
   ```
   source /home/vagrant/workspace/.kafka-workspace/bin/activate
   python /vagrant/src/kafka-consumer.py
   ```
-  Execute the following command on producer-terminal to publish `"Hello from script"` message on `test` topic.
+  
+7. Execute the following command on producer-terminal to publish `"Hello from script"` message on `test` topic.
   
   ```
   source /home/vagrant/workspace/.kafka-workspace/bin/activate
   python /vagrant/src/kafka-producer.py
   ```
-  **__voila!!!__** The client will print the message on the console. It will be something similar to this.
+  
+8. **__voila!!!__** The client will print the message on the console. It will be something similar to this.
   
   ```
   (.kafka-workspace)vagrant@kafka-workshop:~/workspace$ python /vagrant/src/kafka-consumer.py
   test:0:24: key=topic-key value=Hello from script
   ```
-6. Feel free to play with the consumer and producer scripts. Also check out the [command section](#commands) for cool commands.
+  
+9. Feel free to play with the consumer and producer scripts. Also check out the [command section](#commands) for cool commands.
 
 ### Commands
 ---
