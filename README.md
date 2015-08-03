@@ -79,7 +79,7 @@ Following is a list of interesting commands, more can be found [here](https://cw
   e.g
   
   ```
-  /home/vagrant/workspace/kafka_2.10-0.8.2.1/bin/kafka-topics.sh --zookeeper localhost:2181 --list
+  /home/vagrant/workspace/kafka/bin/kafka-topics.sh --zookeeper localhost:2181 --list
   ```
 2. To create a topic.
   
@@ -89,7 +89,7 @@ Following is a list of interesting commands, more can be found [here](https://cw
   e.g
   
   ```
-  /home/vagrant/workspace/kafka_2.10-0.8.2.1/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test2
+  /home/vagrant/workspace/kafka/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test2
   ```
 3. To print latest log size.
   
@@ -99,7 +99,7 @@ Following is a list of interesting commands, more can be found [here](https://cw
   e.g
   
   ```
-  /home/vagrant/workspace/kafka_2.10-0.8.2.1/bin/kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list localhost:9092 --topic test --time -1
+  /home/vagrant/workspace/kafka/bin/kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list localhost:9092 --topic test --time -1
   ```
 4. List info for topics whose leader for a partition is not available
   
@@ -109,7 +109,7 @@ Following is a list of interesting commands, more can be found [here](https://cw
   e.g
   
   ```
-  /home/vagrant/workspace/kafka_2.10-0.8.2.1/bin/kafka-topics.sh --zookeeper localhost:2181 --describe --unavailable-partitions
+  /home/vagrant/workspace/kafka/bin/kafka-topics.sh --zookeeper localhost:2181 --describe --unavailable-partitions
   ```
 5. List info for topics that have under replicated count
   
@@ -119,7 +119,7 @@ Following is a list of interesting commands, more can be found [here](https://cw
   e.g
   
   ```
-  /home/vagrant/workspace/kafka_2.10-0.8.2.1/bin/kafka-topics.sh --zookeeper localhost:2181 --describe --under-replicated-partitions
+  /home/vagrant/workspace/kafka/bin/kafka-topics.sh --zookeeper localhost:2181 --describe --under-replicated-partitions
   ```
 6. Start kafka producer.
   ```
@@ -128,7 +128,7 @@ Following is a list of interesting commands, more can be found [here](https://cw
   e.g
   
   ```
-  /home/vagrant/workspace/kafka_2.10-0.8.2.1/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test 
+  /home/vagrant/workspace/kafka/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test 
   ```
   once this command is executed, you can type on the console and hit enter to send text.
 7. Start kafka consumer.
@@ -139,7 +139,7 @@ Following is a list of interesting commands, more can be found [here](https://cw
   e.g
   
   ```
-  /home/vagrant/workspace/kafka_2.10-0.8.2.1/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test --from-beginning
+  /home/vagrant/workspace/kafka/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test --from-beginning
   ```
   This application reads messages from beginning and also prints messages on console as soon as soon it is available for consumption. This script doesn't commit messages. That means if you start the application again, it will again consume messages from begnning.
 8. Export Zookeeper offsets
@@ -150,8 +150,16 @@ Following is a list of interesting commands, more can be found [here](https://cw
   e.g
   
   ```
-  /home/vagrant/workspace/kafka_2.10-0.8.2.1/bin/kafka-run-class.sh kafka.tools.ExportZkOffsets  --zkconnect localhost:2181 --output-file test.txt
+  /home/vagrant/workspace/kafka/bin/kafka-run-class.sh kafka.tools.ExportZkOffsets  --zkconnect localhost:2181 --output-file test.txt
   ```
+ 9. Check consumer position: This command will show you the current position of all the consumer in a consumer group.
+   ```
+  bin/kafka-run-class.sh kafka.tools.ConsumerOffsetChecker --zkconnect <zookeeper-host>:<port> --group <consumer-group>
+   ```
+   e.g
+   ```
+   home/vagrant/workspace/kafka/bin/kafka-run-class.sh kafka.tools.ConsumerOffsetChecker --zkconnect localhost:2181 --group 'consumer-script'
+   ```
     
 ##### Zookeeper commands
 ---
@@ -163,7 +171,7 @@ Following is a list of interesting commands, more can be found [here](https://cw
   e.g
   
   ```
-  /home/vagrant/workspace/zookeeper-3.4.6/bin/zkCli.sh -server localhost:2181
+  /home/vagrant/workspace/zookeeper/bin/zkCli.sh -server localhost:2181
   ```
   Once you are logged into cli, you can explore the ZK data structure. It is organized as a file system. You can use command like `ls /consumers` to list different consumers.
     
