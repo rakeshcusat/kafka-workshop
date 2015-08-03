@@ -11,7 +11,7 @@
 1. Clone this repository or download it by clicking `Dowload zip` button given on left.
   
   ```
-  git clone git@github.com:rakeshcusat/kafka-workshop.git
+  git clone https://github.com/rakeshcusat/kafka-workshop.git
   ```
 2. Bring up the vagrant box by executing the following command.
   
