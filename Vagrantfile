@@ -54,14 +54,17 @@ mkdir -p /home/vagrant/workspace
 # Install Zookeeper
 echo "Installing zookeeper"
 cd /home/vagrant/workspace
-tar -xvf /vagrant/packages/zookeeper-3.4.6.tar.gz
+tar -xf /vagrant/packages/zookeeper-3.4.6.tar.gz
+ln -s zookeeper-3.4.6 zookeeper
 cd zookeeper-3.4.6/
 cp conf/zoo_sample.cfg conf/zoo.cfg
+
 
 # Install kafka
 echo "Installing kafka"
 cd /home/vagrant/workspace
-tar xvzf /vagrant/packages/kafka_2.10-0.8.2.1.tgz
+tar xzf /vagrant/packages/kafka_2.8.0-0.8.1.1-SNAPSHOT.tgz
+ln -s  kafka_2.8.0-0.8.1.1-SNAPSHOT kafka
 
 # Install pip and ipython
 echo "Installing pip and ipython"
