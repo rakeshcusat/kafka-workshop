@@ -39,7 +39,7 @@
 5. Execute the following command on any of the terminals to create the kafka topic.
 
   ```
-  /home/vagrant/workspace/kafka_2.10-0.8.2.1/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
+  /home/vagrant/workspace/kafka/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
   ```
   
 6. Execute the following command on consumer-terminal. Consumer script will keep waiting for messages from the producer. Once a message is available, it will print on console.
@@ -152,15 +152,29 @@ Following is a list of interesting commands, more can be found [here](https://cw
   ```
   /home/vagrant/workspace/kafka/bin/kafka-run-class.sh kafka.tools.ExportZkOffsets  --zkconnect localhost:2181 --output-file test.txt
   ```
- 9. Check consumer position: This command will show you the current position of all the consumer in a consumer group.
+
+9. Check consumer position: This command will show you the current position of all the consumer in a consumer group.
+ 
    ```
   bin/kafka-run-class.sh kafka.tools.ConsumerOffsetChecker --zkconnect <zookeeper-host>:<port> --group <consumer-group>
    ```
    e.g
+   
    ```
    home/vagrant/workspace/kafka/bin/kafka-run-class.sh kafka.tools.ConsumerOffsetChecker --zkconnect localhost:2181 --group 'consumer-script'
    ```
-    
+ 
+10. Check the In-Syn-Replica (ISR) status.
+  
+  ```
+  /bin/kafka-topics.sh --zookeeper <zookeeper-host>:<port> --describe
+  ```
+  e.g
+  
+  ```
+  /home/vagrant/workspace/kafka/bin/kafka-topics.sh --zookeeper localhost:2181 --describe
+  ```
+
 ##### Zookeeper commands
 ---
 1. To connect to Zookeeper client.
