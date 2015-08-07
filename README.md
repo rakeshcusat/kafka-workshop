@@ -1,4 +1,5 @@
 # Kafka-workshop
+This repository provides basic setup for Kafka and Zookeeper which can provide you an environment for some hands-on experince. It bringup the Vagrant environment which has both (Kafka and Zookeeper) packages installed and some basic python scripts. It can be used for the educational purposes.
 
 ## Prerequisites
 ---
